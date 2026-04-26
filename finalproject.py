@@ -2,6 +2,18 @@
 
 
 import random
+def get_player_name():
+    valid_name = False
+    name = ""
+    while not valid_name:
+        name = input('\nPlayer Name: ').strip()
+        if name == "":
+            print("Error: Name cannot be blank.")
+        elif name.isdigit():
+            print("Error: Name cannot be just numbers.")
+        else:
+            valid_name = True
+    return name
 
 def mid_game_quit():
     try:
@@ -39,7 +51,8 @@ def num_guess():
     game_running = True
 
     while game_running:
-        player = input('\nPlayer Name:')
+        player = get_player_name()
+        
         same_user = True
 
         while same_user:
