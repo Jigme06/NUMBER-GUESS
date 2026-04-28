@@ -6,7 +6,7 @@ def get_player_name():  #this function insures that the name input is valid usin
     valid_name = False
     name = ""
     while not valid_name:
-        name = input('\nPlayer Name: ').strip()
+        name = input('\nPlayer Name: ').strip().lower()
         if name == "":
             print("Error: Name cannot be blank.")
         elif name.isdigit():
@@ -28,7 +28,7 @@ def handle_replay_and_quit(player): # once a game ends, this function handles if
         replay = int(input('\nDo you want to play again? (0 for YES, 1 for NO): '))
 
         if replay == 0:
-            user_change = int(input(f'Continue as {player}? (0 for Yes, 1 for New User): '))
+            user_change = int(input(f'Continue as {player.title()}? (0 for Yes, 1 for New User): '))
             if user_change == 0:
                 return True, True
             else:
@@ -73,7 +73,7 @@ def num_guess():
             attempts_left = difficulty
             start = True        #boolean gatekeeper to see if the game is in session(being played or not)
 
-            print (f'\n Good Luck, {player}!'
+            print (f'\n Good Luck, {player.title()}!'
                 "\n I'm thinking of a number between 1 and 100")
 
             while start:
@@ -121,7 +121,7 @@ def num_guess():
     print ('----SCORE LEADERBOARD------')
     if personal_best:
         for name in personal_best.keys():
-            print(f'PLAYER: {name} || BEST SCORE: {personal_best[name]}')
+            print(f'PLAYER: {name.title()} || BEST SCORE: {personal_best[name]}')
     else:
         print('NO GAME WAS WON')
     print ('----THANK YOU FOR PLAYING----')
